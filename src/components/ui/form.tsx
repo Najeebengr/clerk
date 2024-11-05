@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React from 'react'
 import { loginSchema, registerSchema } from '@/lib/validation/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -11,7 +11,6 @@ import { Button } from './button';
 import { FaCaretRight } from 'react-icons/fa';
 function Form({title}: {title:string}) {
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
   
     // Choose schema based on title prop
     const schema = title === 'signup' ? registerSchema : loginSchema;
@@ -26,7 +25,6 @@ function Form({title}: {title:string}) {
     console.log("Form errors:", errors);
   
     const onSubmit = async (data: z.infer<typeof schema>) => {
-        setLoading(true);
         try {
           const apiEndpoint = title === 'signup' ? '/api/register' : '/api/login';
           const result = await fetch(apiEndpoint, {
@@ -42,7 +40,7 @@ function Form({title}: {title:string}) {
             if (title === 'signup') router.replace('/');
             else{ 
               console.log("Data:", response);
-              router.replace(`/dashboard?firstName=${response.user.firstName}&lastName=${response.user.lastName}`);
+              router.replace(`/dashboard`);
             }
           } else {
             toast.error(response.message || "An error occurred");
@@ -51,7 +49,7 @@ function Form({title}: {title:string}) {
           console.error("Error during submission:", err);
           toast.error("An unexpected error occurred");
         } finally {
-          setLoading(false);
+      
         }
       };
     

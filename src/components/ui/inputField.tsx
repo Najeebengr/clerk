@@ -1,8 +1,9 @@
 // InputField.tsx
 import { InputHTMLAttributes } from 'react';
-
+ 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: any;
 }
 

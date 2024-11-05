@@ -28,6 +28,7 @@ console.log("User inserted:", user);
             user,
         })
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     catch (error: any) {
         console.error("An error occurred:", error);
         if (error instanceof z.ZodError) {

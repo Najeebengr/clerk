@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function PasswordField({ register }: { register: any }) {
   const [showPassword, setShowPassword] = useState(false);
 
