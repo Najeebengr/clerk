@@ -56,8 +56,8 @@ function Form({title}: {title:string}) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-7'>
         {title === 'signup' &&  <div className='flex gap-3'>
-        <InputField label="First Name" id="firstName" type="text" register={register} name="firstName" />
-        <InputField label="Last Name" id="lastName" type="text" register={register} name="lastName" />
+        <InputField label="First Name" id="firstName" type="text" register={register} name="firstName" required/>
+        <InputField label="Last Name" id="lastName" type="text" register={register} name="lastName" required/>
         </div>
 }
           <InputField label="Email address" id="email" type="email" register={register} name="email" />
